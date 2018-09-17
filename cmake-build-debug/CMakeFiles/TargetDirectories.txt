@@ -1,3 +1,3 @@
-/cygdrive/c/Users/shaked/CLionProjects/ex3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/c/Users/shaked/CLionProjects/ex3/cmake-build-debug/CMakeFiles/ex3.dir
-/cygdrive/c/Users/shaked/CLionProjects/ex3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cs/usr/shaked.weitz/ClionProjects/cppex3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cs/usr/shaked.weitz/ClionProjects/cppex3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cs/usr/shaked.weitz/ClionProjects/cppex3/cmake-build-debug/CMakeFiles/ex3.dir

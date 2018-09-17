@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.8)
 project(ex3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ex3 main.cpp my_set.cpp my_set.h)
+set(SOURCE_FILES my_set.h my_set.hpp my_set.cpp )
+add_executable(ex3 ${SOURCE_FILES})
