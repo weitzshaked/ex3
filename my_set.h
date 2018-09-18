@@ -122,27 +122,27 @@ public:
         explicit reverse_treeIterator(std::shared_ptr<Node> current) : treeIterator(current) {};
         virtual treeIterator operator--()
         {
-            this->_pointer = next(this->_pointer);
+            this->_pointer = this->next(this->_pointer);
             return *this;
         }
 
         virtual treeIterator operator--(int)
         {
             treeIterator temp = *this;
-            this->_pointer = next(this->_pointer);
+            this->_pointer = this->next(this->_pointer);
             return temp;
         }
 
         virtual treeIterator operator++()
         {
-            this->_pointer = prev(this->_pointer);
+            this->_pointer = this->prev(this->_pointer);
             return *this;
         }
 
         virtual treeIterator operator++(int)
         {
             treeIterator temp = *this;
-            this->_pointer = prev(this->_pointer);
+            this->_pointer = this->prev(this->_pointer);
             return temp;
         }
 
@@ -238,7 +238,7 @@ public:
     template<class K>
     friend void swap(my_set<K> &first, my_set<K> &second) noexcept;
 
-    constexpr void swap(my_set &other) noexcept;
+    void swap(my_set &other) ;
 
     //getters
 

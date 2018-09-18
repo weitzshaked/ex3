@@ -84,13 +84,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cs/usr/shaked.weitz/ClionProjects/cppex3/my_set.cpp">
+		<Unit filename="/cs/usr/shaked.weitz/ClionProjects/cppex3/catch.hpp">
 			<Option target="ex3"/>
 		</Unit>
 		<Unit filename="/cs/usr/shaked.weitz/ClionProjects/cppex3/my_set.h">
 			<Option target="ex3"/>
 		</Unit>
 		<Unit filename="/cs/usr/shaked.weitz/ClionProjects/cppex3/my_set.hpp">
+			<Option target="ex3"/>
+		</Unit>
+		<Unit filename="/cs/usr/shaked.weitz/ClionProjects/cppex3/my_set_tester.cpp">
 			<Option target="ex3"/>
 		</Unit>
 		<Unit filename="/cs/usr/shaked.weitz/ClionProjects/cppex3/CMakeLists.txt">

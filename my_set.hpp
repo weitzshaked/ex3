@@ -6,43 +6,43 @@
 template<class T>
 std::shared_ptr<typename my_set<T>::Node> my_set<T>::_findMinimum(const std::shared_ptr<typename my_set<T>::Node> &root)
 {
-    while (root->getLeft())
+//    while (root->getLeft())
+//    {
+//        root = root->getLeft();
+//    }
+//    return root;
+    std::shared_ptr<Node> prev, cur = root;
+    if(root == nullptr)
     {
-        root = root->getLeft();
+        return nullptr;
     }
-    return root;
-//    std::shared_ptr<my_set<T>::typename my_set<T>::Node> prev, cur = root;
-//    if(root == nullptr)
-//    {
-//        return nullptr;
-//    }
-//    while (cur->getLeft()!= nullptr)
-//    {
-//        prev = cur;
-//        cur = cur->getLeft();
-//    }
-//    return prev;
+    while (cur->getLeft()!= nullptr)
+    {
+        prev = cur;
+        cur = cur->getLeft();
+    }
+    return prev;
 }
 
 template<class T>
 typename std::shared_ptr<typename my_set<T>::Node> my_set<T>::_findMaximum(const std::shared_ptr<typename my_set<T>::Node> &root)
 {
-    while (root->getRight())
+//    while (root->getRight())
+//    {
+//        root = root->getRight();
+//    }
+//    return root;
+    std::shared_ptr<Node> prev, cur = root;
+    if(root == nullptr)
     {
-        root = root->getRight();
+        return nullptr;
     }
-    return root;
-//    std::shared_ptr<my_set<T>::typename my_set<T>::Node> prev, cur = root;
-//    if(root == nullptr)
-//    {
-//        return nullptr;
-//    }
-//    while (cur->getRight() != nullptr)
-//    {
-//        prev = cur;
-//        cur = cur->getRight();
-//    }
-//    return prev;
+    while (cur->getRight() != nullptr)
+    {
+        prev = cur;
+        cur = cur->getRight();
+    }
+    return prev;
 }
 
 template<class T>
@@ -60,7 +60,7 @@ my_set<T>::treeIterator::next(const std::shared_ptr<typename my_set<T>::Node> &n
     }
 
     std::shared_ptr<Node> next = node->getParent();
-    std::shared_ptr<Node> cur = node.get();
+    std::shared_ptr<Node> cur = node;
     while (next != nullptr && cur == next->getRight())
     {
         cur = next;
@@ -84,7 +84,7 @@ my_set<T>::treeIterator::prev(const std::shared_ptr<typename my_set<T>::Node> &n
     }
 
     std::shared_ptr<Node> next = node->getParent();
-    std::shared_ptr<Node> cur = node.get();
+    std::shared_ptr<Node> cur = node;
     while (next != nullptr && cur == next->getLeft())
     {
         cur = next;
@@ -96,6 +96,10 @@ my_set<T>::treeIterator::prev(const std::shared_ptr<typename my_set<T>::Node> &n
 template<class T>
 typename my_set<T>::const_iterator my_set<T>::find(const value_type &val) const
 {
+    if(_head == nullptr)
+    {
+        return treeIterator(nullptr);
+    }
     std::shared_ptr<Node> cur = _head;
 
     while (cur != nullptr)
@@ -115,7 +119,7 @@ typename my_set<T>::const_iterator my_set<T>::find(const value_type &val) const
         }
     }
 
-    if (cur->getData() == val)
+    if (cur != nullptr && cur->getData() == val)
     {
         return treeIterator(cur);
     }
@@ -191,7 +195,11 @@ template<class T>
 std::pair<typename my_set<T>::const_iterator, bool> my_set<T>::insert(const value_type &val)
 {
     std::shared_ptr<Node> prev, cur = _head;
-
+    if(cur == nullptr)
+    {
+        _head =  std::make_shared<Node>(Node(val));
+        return std::pair<my_set<T>::const_iterator, bool>(treeIterator(_head), true);
+    }
     while (cur != nullptr)
     {
         if (val > cur->getData())
@@ -199,12 +207,12 @@ std::pair<typename my_set<T>::const_iterator, bool> my_set<T>::insert(const valu
             prev = cur;
             cur = cur->getRight();
         }
-        if (val < cur->getData())
+        else if (val < cur->getData())
         {
             prev = cur;
             cur = cur->getLeft();
         }
-        if (val == cur->getData())
+        else if (val == cur->getData())
         {
             break;
         }
@@ -215,7 +223,7 @@ std::pair<typename my_set<T>::const_iterator, bool> my_set<T>::insert(const valu
         return std::pair<my_set<T>::const_iterator, bool>(treeIterator(prev), false);
     }
 
-    std::shared_ptr<Node> node = std::make_shared(Node(val));
+    std::shared_ptr<Node> node = std::make_shared<Node>(Node(val));
     node->setParent(prev);
     if (prev->getLeft() != nullptr)
     {
@@ -242,7 +250,7 @@ void my_set<T>::insert(InputIt first, InputIt last)
 template <class T>
 typename my_set<T>::const_iterator my_set<T>::insert(typename my_set<T>::const_iterator hint, const value_type &value)
 {
-    std::shared_ptr<Node> node = std::make_shared(Node(value));
+    std::shared_ptr<Node> node = std::make_shared<Node>(Node(value));
     if(getHead() == nullptr || hint == cend())
     {
         return insert(value).first;
@@ -410,7 +418,7 @@ template<class InputIt>
 my_set<T>::my_set(InputIt begin, InputIt end)
 {
     _size =0;
-    for(InputIt it = begin(); it != end(); it++)
+    for(InputIt it = begin; it != end; it++)
     {
         insert(*it);
         _size++;
@@ -421,10 +429,7 @@ my_set<T>::my_set(InputIt begin, InputIt end)
 template<class T>
 my_set<T>::my_set(my_set &&other) noexcept
 {
-//    _head = other._head;
-//    other._head = nullptr;
-//    _size = other._size;
-    swap(*this, other);
+    this->swap(other);
 }
 
 template<class T>
@@ -435,7 +440,7 @@ my_set<T> &my_set<T>::operator=(my_set other)
 }
 
 template <class T>
-constexpr void my_set<T>::swap(my_set<T> &other) noexcept
+void my_set<T>::swap(my_set<T> &other)
 {
     auto temp = this->_size;
     this->_size = other._size;

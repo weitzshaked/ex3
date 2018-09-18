@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cs/usr/shaked.weitz/ClionProjects/cppex3/my_set.cpp" "/cs/usr/shaked.weitz/ClionProjects/cppex3/cmake-build-debug/CMakeFiles/ex3.dir/my_set.cpp.o"
+  "/cs/usr/shaked.weitz/ClionProjects/cppex3/my_set_tester.cpp" "/cs/usr/shaked.weitz/ClionProjects/cppex3/cmake-build-debug/CMakeFiles/ex3.dir/my_set_tester.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

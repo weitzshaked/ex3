@@ -3,5 +3,5 @@ project(ex3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES my_set.h my_set.hpp my_set.cpp )
+set(SOURCE_FILES my_set.h my_set.hpp catch.hpp my_set_tester.cpp)
 add_executable(ex3 ${SOURCE_FILES})

@@ -123,32 +123,32 @@ ex3/fast:
 	$(MAKE) -f CMakeFiles/ex3.dir/build.make CMakeFiles/ex3.dir/build
 .PHONY : ex3/fast
 
-my_set.o: my_set.cpp.o
+my_set_tester.o: my_set_tester.cpp.o
 
-.PHONY : my_set.o
+.PHONY : my_set_tester.o
 
 # target to build an object file
-my_set.cpp.o:
-	$(MAKE) -f CMakeFiles/ex3.dir/build.make CMakeFiles/ex3.dir/my_set.cpp.o
-.PHONY : my_set.cpp.o
+my_set_tester.cpp.o:
+	$(MAKE) -f CMakeFiles/ex3.dir/build.make CMakeFiles/ex3.dir/my_set_tester.cpp.o
+.PHONY : my_set_tester.cpp.o
 
-my_set.i: my_set.cpp.i
+my_set_tester.i: my_set_tester.cpp.i
 
-.PHONY : my_set.i
+.PHONY : my_set_tester.i
 
 # target to preprocess a source file
-my_set.cpp.i:
-	$(MAKE) -f CMakeFiles/ex3.dir/build.make CMakeFiles/ex3.dir/my_set.cpp.i
-.PHONY : my_set.cpp.i
+my_set_tester.cpp.i:
+	$(MAKE) -f CMakeFiles/ex3.dir/build.make CMakeFiles/ex3.dir/my_set_tester.cpp.i
+.PHONY : my_set_tester.cpp.i
 
-my_set.s: my_set.cpp.s
+my_set_tester.s: my_set_tester.cpp.s
 
-.PHONY : my_set.s
+.PHONY : my_set_tester.s
 
 # target to generate assembly for a file
-my_set.cpp.s:
-	$(MAKE) -f CMakeFiles/ex3.dir/build.make CMakeFiles/ex3.dir/my_set.cpp.s
-.PHONY : my_set.cpp.s
+my_set_tester.cpp.s:
+	$(MAKE) -f CMakeFiles/ex3.dir/build.make CMakeFiles/ex3.dir/my_set_tester.cpp.s
+.PHONY : my_set_tester.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ex3"
-	@echo "... my_set.o"
-	@echo "... my_set.i"
-	@echo "... my_set.s"
+	@echo "... my_set_tester.o"
+	@echo "... my_set_tester.i"
+	@echo "... my_set_tester.s"
 .PHONY : help
 
 

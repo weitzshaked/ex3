@@ -57,38 +57,38 @@ include CMakeFiles/ex3.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ex3.dir/flags.make
 
-CMakeFiles/ex3.dir/my_set.cpp.o: CMakeFiles/ex3.dir/flags.make
-CMakeFiles/ex3.dir/my_set.cpp.o: ../my_set.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cs/usr/shaked.weitz/ClionProjects/cppex3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ex3.dir/my_set.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex3.dir/my_set.cpp.o -c /cs/usr/shaked.weitz/ClionProjects/cppex3/my_set.cpp
+CMakeFiles/ex3.dir/my_set_tester.cpp.o: CMakeFiles/ex3.dir/flags.make
+CMakeFiles/ex3.dir/my_set_tester.cpp.o: ../my_set_tester.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cs/usr/shaked.weitz/ClionProjects/cppex3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ex3.dir/my_set_tester.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex3.dir/my_set_tester.cpp.o -c /cs/usr/shaked.weitz/ClionProjects/cppex3/my_set_tester.cpp
 
-CMakeFiles/ex3.dir/my_set.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex3.dir/my_set.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/usr/shaked.weitz/ClionProjects/cppex3/my_set.cpp > CMakeFiles/ex3.dir/my_set.cpp.i
+CMakeFiles/ex3.dir/my_set_tester.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex3.dir/my_set_tester.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/usr/shaked.weitz/ClionProjects/cppex3/my_set_tester.cpp > CMakeFiles/ex3.dir/my_set_tester.cpp.i
 
-CMakeFiles/ex3.dir/my_set.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex3.dir/my_set.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/usr/shaked.weitz/ClionProjects/cppex3/my_set.cpp -o CMakeFiles/ex3.dir/my_set.cpp.s
+CMakeFiles/ex3.dir/my_set_tester.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex3.dir/my_set_tester.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/usr/shaked.weitz/ClionProjects/cppex3/my_set_tester.cpp -o CMakeFiles/ex3.dir/my_set_tester.cpp.s
 
-CMakeFiles/ex3.dir/my_set.cpp.o.requires:
+CMakeFiles/ex3.dir/my_set_tester.cpp.o.requires:
 
-.PHONY : CMakeFiles/ex3.dir/my_set.cpp.o.requires
+.PHONY : CMakeFiles/ex3.dir/my_set_tester.cpp.o.requires
 
-CMakeFiles/ex3.dir/my_set.cpp.o.provides: CMakeFiles/ex3.dir/my_set.cpp.o.requires
-	$(MAKE) -f CMakeFiles/ex3.dir/build.make CMakeFiles/ex3.dir/my_set.cpp.o.provides.build
-.PHONY : CMakeFiles/ex3.dir/my_set.cpp.o.provides
+CMakeFiles/ex3.dir/my_set_tester.cpp.o.provides: CMakeFiles/ex3.dir/my_set_tester.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ex3.dir/build.make CMakeFiles/ex3.dir/my_set_tester.cpp.o.provides.build
+.PHONY : CMakeFiles/ex3.dir/my_set_tester.cpp.o.provides
 
-CMakeFiles/ex3.dir/my_set.cpp.o.provides.build: CMakeFiles/ex3.dir/my_set.cpp.o
+CMakeFiles/ex3.dir/my_set_tester.cpp.o.provides.build: CMakeFiles/ex3.dir/my_set_tester.cpp.o
 
 
 # Object files for target ex3
 ex3_OBJECTS = \
-"CMakeFiles/ex3.dir/my_set.cpp.o"
+"CMakeFiles/ex3.dir/my_set_tester.cpp.o"
 
 # External object files for target ex3
 ex3_EXTERNAL_OBJECTS =
 
-ex3: CMakeFiles/ex3.dir/my_set.cpp.o
+ex3: CMakeFiles/ex3.dir/my_set_tester.cpp.o
 ex3: CMakeFiles/ex3.dir/build.make
 ex3: CMakeFiles/ex3.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cs/usr/shaked.weitz/ClionProjects/cppex3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ex3"
@@ -99,7 +99,7 @@ CMakeFiles/ex3.dir/build: ex3
 
 .PHONY : CMakeFiles/ex3.dir/build
 
-CMakeFiles/ex3.dir/requires: CMakeFiles/ex3.dir/my_set.cpp.o.requires
+CMakeFiles/ex3.dir/requires: CMakeFiles/ex3.dir/my_set_tester.cpp.o.requires
 
 .PHONY : CMakeFiles/ex3.dir/requires
 

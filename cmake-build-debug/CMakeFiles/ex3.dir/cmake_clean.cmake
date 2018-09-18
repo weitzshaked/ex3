@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ex3.dir/my_set.cpp.o"
+  "CMakeFiles/ex3.dir/my_set_tester.cpp.o"
   "ex3.pdb"
   "ex3"
 )
