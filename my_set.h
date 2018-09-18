@@ -17,36 +17,27 @@ private:
         T _data;
 
     public:
-        const T& getData() const
-        { return _data; }
+        const T &getData() const { return _data; }
 
-        void setData(const T& data)
-        { _data = data; }
+        void setData(const T &data) { _data = data; }
 
-        void setParent(std::weak_ptr<Node> parent)
-        { _parent = parent; }
+        void setParent(std::weak_ptr<Node> parent) { _parent = parent; }
 
-        void setRight(std::shared_ptr<Node> right)
-        { _right = right; }
+        void setRight(std::shared_ptr<Node> right) { _right = right; }
 
-        void setLeft(std::shared_ptr<Node> left)
-        { _left = left; }
+        void setLeft(std::shared_ptr<Node> left) { _left = left; }
 
         /**
          * constructor
          * @param data
          */
-        explicit Node(T data) : _data(data)
-        {};
+        explicit Node(T data) : _data(data) {};
 
-        std::shared_ptr<Node> getParent()
-        { return _parent.lock(); }
+        std::shared_ptr<Node> getParent() { return _parent.lock(); }
 
-        std::shared_ptr<Node> getRight()
-        { return _right; }
+        std::shared_ptr<Node> getRight() { return _right; }
 
-        std::shared_ptr<Node> getLeft()
-        { return _left; }
+        std::shared_ptr<Node> getLeft() { return _left; }
 
         Node &operator=(const Node &other)
         {
@@ -59,25 +50,25 @@ private:
 
     std::shared_ptr<Node> _head;
     std::size_t _size;
+
     static std::shared_ptr<Node> _findMinimum(const std::shared_ptr<Node> &root);
+
     static std::shared_ptr<Node> _findMaximum(const std::shared_ptr<Node> &root);
 
 public:
     class treeIterator
     {
-    private:
+    protected:
         std::shared_ptr<Node> _pointer;
 
     public:
-        explicit treeIterator(std::shared_ptr<Node> current) : _pointer(current)
-        {};
+        explicit treeIterator(std::shared_ptr<Node> current) : _pointer(current) {};
 
         treeIterator() = default;
 
-//        ~treeIterator();
+        ~treeIterator() = default;
 
-        std::shared_ptr<Node> getPointer()
-        { return _pointer; }
+        std::shared_ptr<Node> getPointer() { return _pointer; }
 
         virtual treeIterator operator++()
         {
@@ -105,13 +96,12 @@ public:
             return temp;
         }
 
-        const T& operator*()
+        const T &operator*()
         { return _pointer.get()->getData(); };
 
         T *operator->()
         {
-            if (_pointer)
-            { return &_pointer.get()->getData(); }
+            if (_pointer) { return &_pointer.get()->getData(); }
             return nullptr;
         };
 
@@ -126,11 +116,35 @@ public:
         std::shared_ptr<Node> prev(const std::shared_ptr<Node> &node);
     };
 
-    class reverse_treeIterator : treeIterator
+    class reverse_treeIterator : public treeIterator
     {
     public:
-        explicit reverse_treeIterator(std::shared_ptr<Node> current) : treeIterator(current)
-        {};
+        explicit reverse_treeIterator(std::shared_ptr<Node> current) : treeIterator(current) {};
+        virtual treeIterator operator--()
+        {
+            this->_pointer = next(this->_pointer);
+            return *this;
+        }
+
+        virtual treeIterator operator--(int)
+        {
+            treeIterator temp = *this;
+            this->_pointer = next(this->_pointer);
+            return temp;
+        }
+
+        virtual treeIterator operator++()
+        {
+            this->_pointer = prev(this->_pointer);
+            return *this;
+        }
+
+        virtual treeIterator operator++(int)
+        {
+            treeIterator temp = *this;
+            this->_pointer = prev(this->_pointer);
+            return temp;
+        }
 
     };
 
@@ -139,7 +153,6 @@ public:
     typedef const value_type &const_reference;
     typedef treeIterator const_iterator;
     typedef reverse_treeIterator reverse_iterator;
-
 
 
     /**
@@ -177,15 +190,9 @@ public:
 
     //methods
 
-    bool empty()
-    {
-        return size() == 0;
-    }
+    bool empty() { return size() == 0; }
 
-    size_t size()
-    {
-        return _size;
-    }
+    size_t size() { return _size; }
 
 
     //insert
@@ -195,7 +202,11 @@ public:
 
     std::pair<const_iterator, bool> insert(const value_type &val);
 
+    std::pair<const_iterator,bool> insert (value_type&& val);
+
     const_iterator insert(const_iterator hint, const value_type &value);
+
+    const_iterator insert (const_iterator hint, value_type&& val);
 
     void clearNode(std::shared_ptr<Node> cur) noexcept;
 
@@ -215,7 +226,8 @@ public:
 
     //erase methods
 
-    std::pair<std::shared_ptr<Node>, bool> eraseHelp(std::shared_ptr<Node> cur, const_reference val);
+    std::pair<std::shared_ptr<Node>, bool>
+    eraseHelp(std::shared_ptr<Node> cur, const_reference val);
 
     const_iterator erase(const_iterator pos);
 
@@ -223,14 +235,14 @@ public:
 
     void erase(const_iterator first, const_iterator last);
 
-    friend void swap(my_set &first, my_set &second) noexcept;
+    template<class K>
+    friend void swap(my_set<K> &first, my_set<K> &second) noexcept;
 
-    constexpr void swap(T &a, T &b) noexcept;
+    constexpr void swap(my_set &other) noexcept;
 
     //getters
 
-    std::shared_ptr<Node> getHead()
-    { return _head; };
+    std::shared_ptr<Node> getHead(){ return _head; };
 
 };
 

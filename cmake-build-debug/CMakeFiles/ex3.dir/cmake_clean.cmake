@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ex3.dir/my_set.cpp.o"
   "ex3.pdb"
-  "ex3.exe"
-  "libex3.dll.a"
+  "ex3"
 )
 
 # Per-language clean rules from dependency scanning.
