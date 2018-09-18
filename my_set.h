@@ -2,32 +2,25 @@
 #define EX3_MY_SET_H
 
 #include <iostream>
-#include <bits/shared_ptr.h>
 #include <memory>
 
 
 template<class T>
 class my_set
 {
-public:
-    typedef T value_type;
-    typedef const value_type &const_reference;
-    typedef treeIterator const_iterator;
-    typedef reverse_treeIterator reverse_iterator;
-
-
+private:
     class Node
     {
     private:
         std::weak_ptr<Node> _parent;
         std::shared_ptr<Node> _right, _left;
-        value_type _data;
+        T _data;
 
     public:
-        const_reference getData() const
+        const T& getData() const
         { return _data; }
 
-        void setData(const_reference data)
+        void setData(const T& data)
         { _data = data; }
 
         void setParent(std::weak_ptr<Node> parent)
@@ -43,7 +36,7 @@ public:
          * constructor
          * @param data
          */
-        explicit Node(value_type data) : _data(data)
+        explicit Node(T data) : _data(data)
         {};
 
         std::shared_ptr<Node> getParent()
@@ -64,6 +57,12 @@ public:
         }
     };
 
+    std::shared_ptr<Node> _head;
+    std::size_t _size;
+    static std::shared_ptr<Node> _findMinimum(const std::shared_ptr<Node> &root);
+    static std::shared_ptr<Node> _findMaximum(const std::shared_ptr<Node> &root);
+
+public:
     class treeIterator
     {
     private:
@@ -106,7 +105,7 @@ public:
             return temp;
         }
 
-        const_reference operator*()
+        const T& operator*()
         { return _pointer.get()->getData(); };
 
         T *operator->()
@@ -127,11 +126,21 @@ public:
         std::shared_ptr<Node> prev(const std::shared_ptr<Node> &node);
     };
 
-    class reverse_treeIterator:treeIterator
+    class reverse_treeIterator : treeIterator
     {
-        explicit reverse_treeIterator(std::shared_ptr<Node> current) : treeIterator(current){};
+    public:
+        explicit reverse_treeIterator(std::shared_ptr<Node> current) : treeIterator(current)
+        {};
 
     };
+
+
+    typedef T value_type;
+    typedef const value_type &const_reference;
+    typedef treeIterator const_iterator;
+    typedef reverse_treeIterator reverse_iterator;
+
+
 
     /**
      * destructor
@@ -188,7 +197,6 @@ public:
 
     const_iterator insert(const_iterator hint, const value_type &value);
 
-
     void clearNode(std::shared_ptr<Node> cur) noexcept;
 
     void clearHelp(std::shared_ptr<Node> cur) noexcept;
@@ -223,13 +231,6 @@ public:
 
     std::shared_ptr<Node> getHead()
     { return _head; };
-
-private:
-    std::shared_ptr<Node> _head;
-    size_t _size;
-
-    static std::shared_ptr<Node> _findMinimum(const std::shared_ptr<Node> &root);
-    static std::shared_ptr<Node> _findMaximum(const std::shared_ptr<Node> &root);
 
 };
 

@@ -4,7 +4,7 @@
 #include "my_set.h"
 
 template<class T>
-std::shared_ptr<Node> my_set<T>::_findMinimum(const std::shared_ptr<Node> &root)
+std::shared_ptr<my_set<T>::Node> my_set<T>::_findMinimum(const std::shared_ptr<my_set<T>::Node> &root)
 {
     while (root->getLeft())
     {
@@ -330,5 +330,47 @@ typename my_set<T>::const_iterator my_set::insert(my_set::const_iterator hint, c
     }
 }
 
+template <class T>
+typename my_set<T>::const_iterator my_set<T>::cbegin() const
+{
+    std::shared_ptr<Node> cur = _head;
+    while (cur->getLeft())
+    {
+        cur = cur->getLeft();
+    }
+    return const_iterator(cur);
+}
 
+template <class T>
+typename my_set<T>::const_iterator my_set<T>::cend() const
+{
+    std::shared_ptr<Node> cur = _head;
+    while (cur->getRight())
+    {
+        cur = cur->getRight();
+    }
+    return const_iterator(cur);
+}
+
+template <class T>
+typename my_set<T>::reverse_iterator my_set<T>::crbegin() const
+{
+    std::shared_ptr<Node> cur = _head;
+    while (cur->getRight())
+    {
+        cur = cur->getRight();
+    }
+    return reverse_iterator(cur);
+}
+
+template <class T>
+typename my_set<T>::reverse_iterator my_set<T>::crend() const
+{
+    std::shared_ptr<Node> cur = _head;
+    while (cur->getRight())
+    {
+        cur = cur->getRight();
+    }
+    return reverse_iterator(cur);
+}
 #endif //EX3_MY_SET_HPP
