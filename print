@@ -1,0 +1,26 @@
+/**
+ * prints the tree. All the nodes at the same level will be printed at the same horizontal line
+ * @param root - your root
+ * @param indent -the number of spaces from the screen left edg
+ */
+	void postorder(std::shared_ptr<Node> root, int indent) //todo delete
+	{
+		if (root != nullptr)
+		{
+			if (root->getRight() != nullptr)
+			{
+				postorder(root->getRight(), indent + 5);
+			}
+			if (indent)
+			{
+				std::cout << std::setw(indent) << ' ';
+			}
+			if (root->getRight()) std::cout << " /\n" << std::setw(indent) << ' ';
+			std::cout << root->getData() << "\n ";
+			if (root->getLeft() != nullptr)
+			{
+				std::cout << std::setw(indent) << ' ' << " \\\n";
+				postorder(root->getLeft(), indent + 5);
+			}
+		}
+	}

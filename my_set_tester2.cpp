@@ -10,6 +10,7 @@
 
 
 using std::endl;
+using std::pair;
 bool insertion_tests();
 
 bool iterationTesting();
